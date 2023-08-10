@@ -1,0 +1,52 @@
+{/* <Welcome name="Yogesh" age="20" />
+      <Welcome name="Manoj" />
+      <Welcome name="Abhijit" /> 
+
+
+      
+//custom component
+//1. First letter must be capital
+//2. Return only one JSX element
+
+
+//props =>property
+//App -> core component
+//JSX => JS XML -> new syntax it looks like html, css
+//JSX -> will be converted into JS
+
+//WebPack + Babel => React -> js understandable code
+//SPA -> only one html page
+//{} => template syntax
+//class -> reserved in JS
+
+
+{/* <ProfileData
+        pic="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?cs=srgb&dl=pexels-mohamed-abdelghaffar-771742.jpg&fm=jpg"
+        name="Yogesh"
+      />
+      <ProfileData
+        pic="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
+        name="OmPrakash"
+      />
+      <ProfileData
+        pic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzHQv_th9wq3ivQ1CVk7UZRxhbPq64oQrg5Q&usqp=CAU"
+        name="Aswin"
+      /> */}
+      {/* <h1>Hello {name} 🥳🥳🥳</h1>
+      <h1>Hello {name1} 🥳🥳🥳</h1> */}
+      {/* {people.map((personName) => (
+        <Welcome name={personName} />
+      ))} */}
+
+
+
+Hooks - function 
+----------
+
+useState => destructure 
+const [state, setState] = useState(initialValue)
+const [like, setLike] = useState(10)
+
+State =>  current situation
+State of the art technology => currently which tech is in top
+state of mind  => currently running in your mind
