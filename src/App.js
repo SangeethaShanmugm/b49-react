@@ -1,87 +1,77 @@
 import "./App.css";
-import { useState } from "react";
+import { AddColor } from "./AddColor";
+import { Counter } from "./Counter";
+const INITIAL_PRODUCT_LIST = [
+  {
+    name: "Iphone 14 Pro Max",
+    price: "1,27,999",
+    poster: "https://m.media-amazon.com/images/I/71T5NVOgbpL._SX679_.jpg",
+    category: "Electronics",
+    rating: 8,
+    description:
+      "17.00 cm (6.7-inch) Super Retina XDR display featuring Always-On and ProMotion,48MP Main camera for up to 4x greater resolution",
+  },
+  {
+    name: "Lenovo Tab M10 HD 2nd Gen",
+    price: "9,199",
+    poster: "https://m.media-amazon.com/images/I/71UXXKK2gSL._SX679_.jpg",
+    category: "Electronics",
+    rating: 7,
+    description:
+      "10.1 HD (1280x800) display with TDDI technology and 400 nits brightness and TUV Rhienland certified eye protection",
+  },
+  {
+    name: "U.S. POLO ASSN. Men T-Shirt",
+    price: "803",
+    poster: "https://m.media-amazon.com/images/I/819biZOXNrL._UX569_.jpg",
+    category: "Clothing Accessories",
+    rating: 7,
+    description: "Fit Type: Regular Fit, HALF SLEEVE POLO",
+  },
+];
 
 export default function App() {
   //Js starts
-  const name = "OmPrakash";
-  const name1 = "Aswin";
+  const productList = INITIAL_PRODUCT_LIST;
 
-  const people = ["Yogesh", "Manoj", "Abhijit", "Kaushik"];
-
-  const userList = [
-    {
-      pic: "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?cs=srgb&dl=pexels-mohamed-abdelghaffar-771742.jpg&fm=jpg",
-      name: "Yogesh",
-    },
-    {
-      pic: "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg",
-      name: "OmPrakash",
-    },
-    {
-      pic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzHQv_th9wq3ivQ1CVk7UZRxhbPq64oQrg5Q&usqp=CAU",
-      name: "Aswin",
-    },
-  ];
-  //                0          1         2
   //JS ends
   //JSX starts
   return (
     <div className="App">
-      {/* {userList.map((usr) => (
-        <ProfileData image={usr.pic} name={usr.name} />
-      ))} */}
-      <Counter />
+      <div className="product-list">
+        {productList.map((pd) => (
+          <Product product={pd} />
+        ))}
+      </div>
     </div>
   );
   //JSX ends
 }
 
-function Counter() {
-  // let like = 10;
-  const [like, setLike] = useState(1);
-  const [dislike, setDisLike] = useState(1);
-  return (
-    <>
-      {/* onClick => camelCase */}
-      <button
-        onClick={() => {
-          setLike(like + 1);
-          console.log(like);
-        }}
-      >
-        👍 {like}
-      </button>
-      <button
-        onClick={() => {
-          setDisLike(dislike + 1);
-          console.log(dislike);
-        }}
-      >
-        👎{dislike}
-      </button>
-    </>
-  );
-}
+function Product({ product }) {
+  // const product = {
+  //   name: "Iphone 14 Pro Max",
+  //   price: "1,27,999",
+  //   poster: "https://m.media-amazon.com/images/I/71T5NVOgbpL._SX679_.jpg",
+  //   category: "Electronics",
+  //   rating: 8,
+  //   description:
+  //     "17.00 cm (6.7-inch) Super Retina XDR display featuring Always-On and ProMotion,48MP Main camera for up to 4x greater resolution",
+  // };
 
-//Display Profile Pic and name 🏢
-
-function ProfileData({ image, name }) {
   return (
-    <div>
-      <img className="profile-pic" src={image} alt={name} />
-      <h1>{name}</h1>
+    <div className="product-container">
+      <img className="product-poster" src={product.poster} />
+      <div className="product-spec">
+        <h2 className="product-name">{product.name}</h2>
+        <h5 className="product-rating">⭐{product.rating}</h5>
+      </div>
+      <p className="product-description">{product.description}</p>
+      <div className="product-cat">
+        <p className="product-category">{product.category}</p>
+        <p className="product-price">₹ {product.price}</p>
+      </div>
+      <Counter />
     </div>
-  );
-}
-
-function Welcome({ name, age }) {
-  return (
-    //Fragment => React.Fragment
-    <>
-      <h1>
-        Hey {name} {age}🥳🥳🥳
-      </h1>
-      {/* <h1>Hey {props.name} 🥳🥳🥳</h1> */}
-    </>
   );
 }
