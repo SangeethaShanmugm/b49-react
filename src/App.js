@@ -1,9 +1,11 @@
 import "./App.css";
 import { AddColor } from "./AddColor";
-import { Counter } from "./Counter";
-const INITIAL_PRODUCT_LIST = [
+import { Routes, Route } from "react-router-dom";
+import { ProductList } from "./ProductList";
+import { ProfileData } from "./ProfileData";
+export const INITIAL_PRODUCT_LIST = [
   {
-    name: "Iphone 14 Pro Max",
+    name: "Iphone 14",
     price: "1,27,999",
     poster: "https://m.media-amazon.com/images/I/71T5NVOgbpL._SX679_.jpg",
     category: "Electronics",
@@ -16,7 +18,7 @@ const INITIAL_PRODUCT_LIST = [
     price: "9,199",
     poster: "https://m.media-amazon.com/images/I/71UXXKK2gSL._SX679_.jpg",
     category: "Electronics",
-    rating: 7,
+    rating: 8.7,
     description:
       "10.1 HD (1280x800) display with TDDI technology and 400 nits brightness and TUV Rhienland certified eye protection",
   },
@@ -32,46 +34,46 @@ const INITIAL_PRODUCT_LIST = [
 
 export default function App() {
   //Js starts
-  const productList = INITIAL_PRODUCT_LIST;
 
   //JS ends
   //JSX starts
   return (
     <div className="App">
-      <div className="product-list">
-        {productList.map((pd) => (
-          <Product product={pd} />
-        ))}
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<ProductList />} />
+        <Route path="/color-game" element={<AddColor />} />
+        <Route path="/users" element={<UserList />} />
+      </Routes>
     </div>
   );
   //JSX ends
 }
 
-function Product({ product }) {
-  // const product = {
-  //   name: "Iphone 14 Pro Max",
-  //   price: "1,27,999",
-  //   poster: "https://m.media-amazon.com/images/I/71T5NVOgbpL._SX679_.jpg",
-  //   category: "Electronics",
-  //   rating: 8,
-  //   description:
-  //     "17.00 cm (6.7-inch) Super Retina XDR display featuring Always-On and ProMotion,48MP Main camera for up to 4x greater resolution",
-  // };
+function UserList() {
+  const userList = [
+    {
+      pic: "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?cs=srgb&dl=pexels-mohamed-abdelghaffar-771742.jpg&fm=jpg",
+      name: "Yogesh",
+    },
+    {
+      pic: "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg",
+      name: "OmPrakash",
+    },
+    {
+      pic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzHQv_th9wq3ivQ1CVk7UZRxhbPq64oQrg5Q&usqp=CAU",
+      name: "Aswin",
+    },
+  ];
 
   return (
-    <div className="product-container">
-      <img className="product-poster" src={product.poster} />
-      <div className="product-spec">
-        <h2 className="product-name">{product.name}</h2>
-        <h5 className="product-rating">⭐{product.rating}</h5>
-      </div>
-      <p className="product-description">{product.description}</p>
-      <div className="product-cat">
-        <p className="product-category">{product.category}</p>
-        <p className="product-price">₹ {product.price}</p>
-      </div>
-      <Counter />
-    </div>
+    <>
+      {userList.map((usr) => (
+        <ProfileData image={usr.pic} name={usr.name} />
+      ))}
+    </>
   );
+}
+function Home() {
+  return <h1>Welcome to Product App🥳🥳🥳</h1>;
 }
