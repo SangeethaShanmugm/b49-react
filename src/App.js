@@ -1,6 +1,6 @@
 import "./App.css";
 import { AddColor } from "./AddColor";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link, useParams } from "react-router-dom";
 import { ProductList } from "./ProductList";
 import { ProfileData } from "./ProfileData";
 export const INITIAL_PRODUCT_LIST = [
@@ -39,15 +39,52 @@ export default function App() {
   //JSX starts
   return (
     <div className="App">
+      <nav>
+        <ul>
+          <li>
+            {/* Link change page without refresh */}
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/products">ProductList</Link>
+          </li>
+          <li>
+            <Link to="/color-game">AddColor</Link>
+          </li>
+          <li>
+            <Link to="/users">UserList</Link>
+          </li>
+          <li>
+            <Link to="/somewhere">SomeWhere</Link>
+          </li>
+        </ul>
+      </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductList />} />
         <Route path="/color-game" element={<AddColor />} />
         <Route path="/users" element={<UserList />} />
+        <Route path="/products/:productid" element={<ProductDetails />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );
   //JSX ends
+}
+
+function ProductDetails() {
+  const { productid } = useParams();
+
+  return <div>ProductDetails Page - {productid}</div>;
+}
+
+function NotFoundPage() {
+  return (
+    <img
+      style={{ height: "500px" }}
+      src="https://i.pinimg.com/originals/90/fb/43/90fb4379e62ef4104a0bd58bae82fe35.gif"
+    />
+  );
 }
 
 function UserList() {
