@@ -62,3 +62,13 @@
   flex-direction: column;
   gap: 10px;
 }
+
+.product-detail-container {
+  width: 80%;
+}
+
+.product-detail-spec {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
