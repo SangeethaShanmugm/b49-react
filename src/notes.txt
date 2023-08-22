@@ -17,7 +17,7 @@
 //WebPack + Babel => React -> js understandable code
 //SPA -> only one html page
 //{} => template syntax
-//class -> reserved in JS
+//classname -> reserved in JS
 
 
 {/* <ProfileData
