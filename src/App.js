@@ -14,6 +14,8 @@ import { Home } from "./Home";
 import { UserList } from "./UserList";
 import { NotFoundPage } from "./NotFoundPage";
 import { ProductDetails } from "./ProductDetails";
+import { AddProduct } from "./AddProduct";
+import ExampleContext from "./context/ExampleContext";
 
 export const INITIAL_PRODUCT_LIST = [
   {
@@ -72,6 +74,9 @@ export default function App() {
             <Button color="inherit" onClick={() => navigate("/products")}>
               ProductList
             </Button>
+            <Button color="inherit" onClick={() => navigate("/products/add")}>
+              Add Product
+            </Button>
             <Button color="inherit" onClick={() => navigate("/color-game")}>
               AddColor
             </Button>
@@ -80,6 +85,9 @@ export default function App() {
             </Button>
             <Button color="inherit" onClick={() => navigate("/somewhere")}>
               SomeWhere
+            </Button>
+            <Button color="inherit" onClick={() => navigate("/context")}>
+              Context
             </Button>
             <Button
               sx={{ marginLeft: "57%" }}
@@ -125,13 +133,24 @@ export default function App() {
             }
           />
           <Route path="/items" element={<Navigate replace to="/products" />} />
-
+          <Route
+            path="/products/add"
+            element={
+              <AddProduct
+                productList={productList}
+                setProductList={setProductList}
+              />
+            }
+          />
           <Route path="/color-game" element={<AddColor />} />
           <Route path="/users" element={<UserList />} />
           <Route
             path="/products/:productid"
             element={<ProductDetails productList={productList} />}
           />
+
+          <Route path="/context" element={<ExampleContext />} />
+
           <Route path="/404" element={<NotFoundPage />} />
           <Route path="*" element={<Navigate replace to="/404" />} />
         </Routes>
