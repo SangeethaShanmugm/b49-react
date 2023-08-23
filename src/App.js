@@ -1,6 +1,6 @@
 import "./App.css";
 import { AddColor } from "./AddColor";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Routes, Route, Link, useNavigate, Navigate } from "react-router-dom";
 import { ProductList } from "./ProductList";
 import { useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -124,13 +124,16 @@ export default function App() {
               />
             }
           />
+          <Route path="/items" element={<Navigate replace to="/products" />} />
+
           <Route path="/color-game" element={<AddColor />} />
           <Route path="/users" element={<UserList />} />
           <Route
             path="/products/:productid"
             element={<ProductDetails productList={productList} />}
           />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/404" element={<NotFoundPage />} />
+          <Route path="*" element={<Navigate replace to="/404" />} />
         </Routes>
       </div>
     </ThemeProvider>
