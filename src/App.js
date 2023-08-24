@@ -16,6 +16,7 @@ import { NotFoundPage } from "./NotFoundPage";
 import { ProductDetails } from "./ProductDetails";
 import { AddProduct } from "./AddProduct";
 import ExampleContext from "./context/ExampleContext";
+import TicTacToe from "./TicTacToe";
 
 export const INITIAL_PRODUCT_LIST = [
   {
@@ -89,8 +90,11 @@ export default function App() {
             <Button color="inherit" onClick={() => navigate("/context")}>
               Context
             </Button>
+            <Button color="inherit" onClick={() => navigate("/tic-tac-toe")}>
+              TicTacToe
+            </Button>
             <Button
-              sx={{ marginLeft: "57%" }}
+              sx={{ marginLeft: "40%" }}
               startIcon={
                 mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />
               }
@@ -150,7 +154,7 @@ export default function App() {
           />
 
           <Route path="/context" element={<ExampleContext />} />
-
+          <Route path="/tic-tac-toe" element={<TicTacToe />} />
           <Route path="/404" element={<NotFoundPage />} />
           <Route path="*" element={<Navigate replace to="/404" />} />
         </Routes>
