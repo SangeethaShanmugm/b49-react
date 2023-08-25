@@ -2,7 +2,7 @@ import "./App.css";
 import { AddColor } from "./AddColor";
 import { Routes, Route, Link, useNavigate, Navigate } from "react-router-dom";
 import { ProductList } from "./ProductList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
@@ -52,6 +52,19 @@ export default function App() {
   //Lifting the state up  => Lifted from child to parent
   const [productList, setProductList] = useState(INITIAL_PRODUCT_LIST);
   const [mode, setMode] = useState("light");
+
+  // useEffect(() => {}); => componentDidUpdate => called everytime
+  // useEffect(() => { 
+  //  console.log("Like is updated", like +dislike);
+  // }, [like, dislike]); => called everytime
+  // useEffect(() => {}, []); => componentDidMount => called only once
+
+  useEffect(() => {}); 
+
+  // fetch("https://64e82b5399cf45b15fdf3632.mockapi.io/products")
+  //   .then((res) => res.json())
+  //   .then((data) => setProductList(data));
+
   //1. Creating -> createContext ✅
   //2. Publisher => provider => context.Provider ✅
   //3. Subscriber => useContext => useContext(context)
@@ -94,7 +107,7 @@ export default function App() {
               TicTacToe
             </Button>
             <Button
-              sx={{ marginLeft: "40%" }}
+              sx={{ marginLeft: "10%" }}
               startIcon={
                 mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />
               }
