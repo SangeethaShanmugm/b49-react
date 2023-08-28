@@ -5,7 +5,7 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { IconButton } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
-export function Product({ product, id }) {
+export function Product({ product, id, deleteButton, editButton }) {
   const [show, setShow] = useState(true);
 
   const styles = {
@@ -56,7 +56,10 @@ export function Product({ product, id }) {
         <p className="product-category">{product.category}</p>
         <p className="product-price">₹ {product.price}</p>
       </div>
-      <Counter />
+      <div>
+        <Counter />
+        {deleteButton} {editButton}
+      </div>
     </div>
   );
 }

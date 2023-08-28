@@ -2,11 +2,12 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API } from "./global";
 
 //Task
 // products/add => <AddProduct/>
 //Add Product => Product Added => /products (Product List Page)
-export function AddProduct({ productList, setProductList }) {
+export function AddProduct() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [poster, setPoster] = useState("");
@@ -70,8 +71,27 @@ export function AddProduct({ productList, setProductList }) {
             rating,
             description,
           };
-          setProductList([...productList, newProduct]);
-          navigate("/products");
+          // console.log(JSON.stringify(newProduct));
+          //1. method  = POST ✅
+          //2. body =  pass data in body-> JSON.stringify ✅
+          //3. Headers = JSON
+
+          fetch(`${API}/products`, {
+            method: "POST",
+            body: JSON.stringify(newProduct),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((res) => res.json())
+            .then(() => navigate("/products"));
+          //Currently post and navigate to /products immediately
+          // When post is completed => navigate /products
+
+          // .then((data) => setProductList(data));
+
+          // setProductList([...productList, newProduct]);
+          // navigate("/products");
         }}
       >
         Add Product

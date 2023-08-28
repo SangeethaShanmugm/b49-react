@@ -2,11 +2,22 @@ import { useParams, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
-
-export function ProductDetails({ productList }) {
+import { useState, useEffect } from "react";
+import { API } from "./global";
+export function ProductDetails() {
   const { productid } = useParams();
-  const product = productList[productid];
-  console.log(productList[productid]);
+  // const product = productList[productid];
+  // console.log(productList[productid]);
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    fetch(`${API}/products/${productid}`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => setProduct(data));
+  }, []);
+
   const navigate = useNavigate();
   return (
     <div>

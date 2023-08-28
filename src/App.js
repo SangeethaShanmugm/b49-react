@@ -17,6 +17,7 @@ import { ProductDetails } from "./ProductDetails";
 import { AddProduct } from "./AddProduct";
 import ExampleContext from "./context/ExampleContext";
 import TicTacToe from "./TicTacToe";
+import { EditProduct } from "./EditProduct";
 
 export const INITIAL_PRODUCT_LIST = [
   {
@@ -50,20 +51,14 @@ export const INITIAL_PRODUCT_LIST = [
 
 export default function App() {
   //Lifting the state up  => Lifted from child to parent
-  const [productList, setProductList] = useState(INITIAL_PRODUCT_LIST);
+  const [productList, setProductList] = useState([]);
   const [mode, setMode] = useState("light");
 
   // useEffect(() => {}); => componentDidUpdate => called everytime
-  // useEffect(() => { 
+  // useEffect(() => {
   //  console.log("Like is updated", like +dislike);
   // }, [like, dislike]); => called everytime
   // useEffect(() => {}, []); => componentDidMount => called only once
-
-  useEffect(() => {}); 
-
-  // fetch("https://64e82b5399cf45b15fdf3632.mockapi.io/products")
-  //   .then((res) => res.json())
-  //   .then((data) => setProductList(data));
 
   //1. Creating -> createContext ✅
   //2. Publisher => provider => context.Provider ✅
@@ -140,31 +135,14 @@ export default function App() {
         </nav> */}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/products"
-            element={
-              <ProductList
-                productList={productList}
-                setProductList={setProductList}
-              />
-            }
-          />
+          <Route path="/products" element={<ProductList />} />
           <Route path="/items" element={<Navigate replace to="/products" />} />
-          <Route
-            path="/products/add"
-            element={
-              <AddProduct
-                productList={productList}
-                setProductList={setProductList}
-              />
-            }
-          />
+          <Route path="/products/add" element={<AddProduct />} />
           <Route path="/color-game" element={<AddColor />} />
           <Route path="/users" element={<UserList />} />
-          <Route
-            path="/products/:productid"
-            element={<ProductDetails productList={productList} />}
-          />
+          <Route path="/products/:productid" element={<ProductDetails />} />
+
+          <Route path="/products/edit/:productid" element={<EditProduct />} />
 
           <Route path="/context" element={<ExampleContext />} />
           <Route path="/tic-tac-toe" element={<TicTacToe />} />
