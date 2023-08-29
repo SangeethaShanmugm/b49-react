@@ -18,6 +18,7 @@ import { AddProduct } from "./AddProduct";
 import ExampleContext from "./context/ExampleContext";
 import TicTacToe from "./TicTacToe";
 import { EditProduct } from "./EditProduct";
+import { BasicForm } from "./BasicForm";
 
 export const INITIAL_PRODUCT_LIST = [
   {
@@ -101,6 +102,9 @@ export default function App() {
             <Button color="inherit" onClick={() => navigate("/tic-tac-toe")}>
               TicTacToe
             </Button>
+            <Button color="inherit" onClick={() => navigate("/basic-form")}>
+              Basic Form
+            </Button>
             <Button
               sx={{ marginLeft: "10%" }}
               startIcon={
@@ -146,6 +150,7 @@ export default function App() {
 
           <Route path="/context" element={<ExampleContext />} />
           <Route path="/tic-tac-toe" element={<TicTacToe />} />
+          <Route path="/basic-form" element={<BasicForm />} />
           <Route path="/404" element={<NotFoundPage />} />
           <Route path="*" element={<Navigate replace to="/404" />} />
         </Routes>
@@ -154,3 +159,5 @@ export default function App() {
   );
   //JSX ends
 }
+
+

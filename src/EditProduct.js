@@ -79,37 +79,30 @@ function EditProductForm({ product }) {
       <Button
         color="success"
         variant="contained"
-        // onClick={() => {
-        //   const newProduct = {
-        //     name,
-        //     price,
-        //     poster,
-        //     category,
-        //     rating,
-        //     description,
-        //   };
-        //   // console.log(JSON.stringify(newProduct));
-        //   //1. method  = POST ✅
-        //   //2. body =  pass data in body-> JSON.stringify ✅
-        //   //3. Headers = JSON
+        onClick={() => {
+          const updatedProduct = {
+            name,
+            price,
+            poster,
+            category,
+            rating,
+            description,
+          };
 
-        //   fetch(`${API}/products`, {
-        //     method: "POST",
-        //     body: JSON.stringify(newProduct),
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //     },
-        //   })
-        //     .then((res) => res.json())
-        //     .then(() => navigate("/products"));
-        //   //Currently post and navigate to /products immediately
-        //   // When post is completed => navigate /products
+          //1. method  = PUT ✅
+          //2. body =  pass data in body-> JSON.stringify ✅
+          //3. Headers = JSON
 
-        //   // .then((data) => setProductList(data));
-
-        //   // setProductList([...productList, newProduct]);
-        //   // navigate("/products");
-        // }}
+          fetch(`${API}/products/${product.id}`, {
+            method: "PUT",
+            body: JSON.stringify(updatedProduct),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((res) => res.json())
+            .then(() => navigate("/products"));
+        }}
       >
         SAVE
       </Button>
